@@ -1,25 +1,25 @@
 :root {
-    --background--colour: #FFFFFF;
-    --seconary-colour: rgb(0, 20, 80);
-    --accent--colour: rgb(0, 124, 165);
+  --background--colour: #ffffff;
+  --seconary-colour: rgb(0, 20, 80);
+  --accent--colour: rgb(193, 56, 10);
 }
 
 body {
-    color: var(--seconary-colour);
-    font-family: "Montserrat", sans-serif;
+  color: var(--seconary-colour);
+  font-family: "Montserrat", sans-serif;
 }
 
 .movie-card {
-    display: inline-block;
-    border-style: solid;
-    border-radius: 1rem;
-    border-width: 0.2rem;
-    margin: 1rem;
-    padding: 1rem;
-    border-color: var(--seconary-colour);
+  display: inline-block;
+  border-style: solid;
+  border-radius: 1rem;
+  border-width: 0.2rem;
+  margin: 1rem;
+  padding: 1rem;
+  border-color: var(--seconary-colour);
 }
 
 .highlight {
-    color: var(--accent--colour);
-    font-weight: bold;
+  color: var(--accent--colour);
+  font-weight: bold;
 }
