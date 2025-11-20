@@ -21,30 +21,18 @@ class MovieList {
         this.movies.push(movie);
     }
 
-    prepareMovies() {
-
+    searchById(id) {
+        return this.movies.find((movie) => movie.id == id);
     }
 
-    updateDisplay() {
+    updateDisplay(predicate) {
         //making these values a constants might allow the js runtime to
         //hoist the switch and if statements that use these values
         const sortOrder = getSelectedSortOrder();
 
-        const searchValue = searchBox.value;
-
-        const searchType = (searchValue && searchValue != "") ? getSelectedSearchType() : null;
-
         writeMovieDisplay(
-            this.movies.filter(movie => {
-                switch (searchType) {
-                    case "id":
-                        return movie.id == searchValue;
-                    case "title":
-                        return movie.title.includes(searchValue);
-                    default:
-                        return true;
-                }
-            }).map((movie) => { 
+            this.movies.map(predicate)
+            .map((movie) => { 
                 let highlights = {};
     
                 switch (sortOrder) {
@@ -56,15 +44,6 @@ class MovieList {
                     break;
                     case "best-movies":
                         highlights.rating = true;
-                    break;
-                }
-
-                switch (searchType) {
-                    case "id":
-                        highlights.id = true;
-                    break;
-                    case "title":
-                        highlights.title = true;
                     break;
                 }
     
@@ -117,8 +96,6 @@ class MovieList {
 
         return matched;
     }
-
-
 }
 
 function writeMovieDisplay(movies) {
@@ -196,33 +173,37 @@ function sortMovies(movies) {
     return movies;
 }
 
-
-
 let movieList = new MovieList();
 
 document.getElementById("add-movie").addEventListener("submit", (e) => {
     e.preventDefault();
     movieList.gatherMovieAdd();
-    movieList.updateDisplay();
 });
 
 document.querySelectorAll('input[name="sort-type"]').forEach(button => {
     button.addEventListener("change", (e) => {
         e.preventDefault();
-        movieList.updateDisplay();
+        movieList.updateDisplay(m => m);
     });
 });
 
-document.querySelectorAll('input[name="search-type"]').forEach(button => {
-    button.addEventListener("change", (e) => {
-        e.preventDefault();
-        movieList.updateDisplay();
-    });
+document.getElementById("by-title").addEventListener("click", (e) => {
+    const searchTitle = searchBox.value;
+
+    movieList.updateDisplay(movie => movie.title.contains(searchTitle));
 });
 
-searchBox.addEventListener("change", (e) => {
-    movieList.updateDisplay();
-})
+document.getElementById("by-id").addEventListener("click", (e) => {
+    let target = searchBox.value;
+
+    if (movieList.searchById(target)) {
+        movieList.updateDisplay(movie => movie.id == target);
+    } else {
+        window.alert("0 results found");
+    }
+});
+
+document.getElementById("update-display").addEventListener("click", (e) => movieList.updateDisplay(m => m));
 
 //comment from brnach b
 //comment from branch c

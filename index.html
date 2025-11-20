@@ -10,54 +10,68 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <h1>My Movie List</h1>
-        <section>
-            <h3>Add Movie</h3>
+        <header>
+            <div class="container">
+                <h1>My Movie List</h1>
+            </div>
+        </header>
 
-            <form action="" id="add-movie">
-                <label for="title">Title</label><br>
-                <input type="text" name="title" id="title"><br>
-                <label for="year">Year of release</label><br>
-                <input type="number" name="year" id="year"><br>
-                <label for="rating">Rating</label><br>
-                <input type="text" name="rating" id="rating"><br>
-                <label for="movieid">Movie ID</label><br>
-                <input type="number" name="movieid" id="movieid"><br>
+        <div class="container">
+            <div id="grid">
+                <section id="movie-add">
+                    <h3>Add Movie</h3>
+        
+                    <form action="" id="add-movie">
+                        <label for="title">Title</label><br>
+                        <input type="text" name="title" id="title"><br>
+                        <label for="year">Year of release</label><br>
+                        <input type="number" name="year" id="year"><br>
+                        <label for="rating">Rating</label><br>
+                        <input type="text" name="rating" id="rating"><br>
+                        <label for="movieid">Movie ID</label><br>
+                        <input type="number" name="movieid" id="movieid"><br>
+        
+                        <input type="submit" value="Add">
+                    </form>
+                </section>
 
-                <input type="submit" value="Add">
-            </form>
-        </section>
+                <section>
+                    <h3>Search</h3>
+                    <form>
+                        <label for="search"></label>
+                        <input type="text" name="search" id="search" title="enter text to search"><br>
+                        <button id="by-id">By Id</button>
+                        <button id="by-title">By Title</button>
+                    </form>
+                </section>
+                <div></div>
+                    <section>
+                        <h3>Sort</h3>
+            
+                        <form action="" id="sort-movies">
+                            <input type="radio" id="A-Z" name="sort-type" value="A-Z", checked>
+                            <label for="A-Z">A-Z</label><br>
+                            <input type="radio" id="Z-A" name="sort-type" value="Z-A">
+                            <label for="Z-A">Z-A</label><br>
+                            <input type="radio" id="best-movies" name="sort-type" value="best-movies">
+                            <label for="best-movies">Best Movies</label>
+                        </form>
+                    </section>
+            </div>
 
-        <section>
-            <h3>Sort Movies</h3>
-
-            <form action="" id="sort-movies">
-                <input type="radio" id="A-Z" name="sort-type" value="A-Z", checked>
-                <label for="A-Z">A-Z</label><br>
-                <input type="radio" id="Z-A" name="sort-type" value="Z-A">
-                <label for="Z-A">Z-A</label><br>
-                <input type="radio" id="best-movies" name="sort-type" value="best-movies">
-                <label for="best-movies">Best Movies</label>
-            </form>
-        </section>
-
-        <section>
-            <h3>Search</h3>
-            <form action="">
-                <input type="radio" id="search-title" name="search-type" value="search-title", checked>
-                <label for="search-title">Search by title</label><br>
-                <input type="radio" id="search-id" name="search-type" value="search-id">
-                <label for="search-id">Search by ID</label><br>
-                <label for="search"></label>
-                <input type="text" name="search" id="search" title="enter text to search">
-            </form>
-
-        </section>
-
+            <button id="update-display">Update Display</button>
         <h3>Display</h3>
         <section id="movies">
 
         </section>
+        </div>
+
+        <footer>
+            <div class="container">
+                <h5>Your movie list</h5>
+                <h6>Created by <span class="accent">Jed McKenna</span></h6>
+            </div>
+        </footer>
 
         <script src="./javascript.js"></script>
     </body>

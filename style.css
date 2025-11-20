@@ -4,9 +4,40 @@
   --accent--colour: rgb(193, 56, 10);
 }
 
+.container {
+  margin: 0.5rem;
+}
+
+.accent {
+  color: var(--accent--colour)
+}
+
+footer {
+  background-color: var(--seconary-colour);
+  margin: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+header {
+  background-color: var(--seconary-colour);
+  margin: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+header * {
+  color: var(--background--colour);
+}
+
+footer * {
+  color: var(--background--colour);
+}
+
 body {
   color: var(--seconary-colour);
   font-family: "Montserrat", sans-serif;
+  margin: 0;
 }
 
 .movie-card {
@@ -22,4 +53,13 @@ body {
 .highlight {
   color: var(--accent--colour);
   font-weight: bold;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#movie-add {
+  grid-row: 1 / 4;
 }
