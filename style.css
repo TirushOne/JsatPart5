@@ -55,6 +55,10 @@ body {
   font-weight: bold;
 }
 
+#update-display {
+  background-color: var(--accent--colour);
+}
+
 #grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
