@@ -31,7 +31,7 @@ class MovieList {
         const sortOrder = getSelectedSortOrder();
 
         writeMovieDisplay(
-            this.movies.map(predicate)
+            this.movies.filter(predicate)
             .map((movie) => { 
                 let highlights = {};
     
@@ -73,16 +73,6 @@ class MovieList {
         this.addMovie(movie);
 
         console.log(this.movies);
-    }
-
-    searchById(id) {
-        for (let i = 0; i < this.movies.length; i++) {
-            if (this.movies[i].id == id) {
-                return this.movies[i];
-            }
-        }
-
-        return null;
     }
 
     searchByTitle(title) {
@@ -183,17 +173,19 @@ document.getElementById("add-movie").addEventListener("submit", (e) => {
 document.querySelectorAll('input[name="sort-type"]').forEach(button => {
     button.addEventListener("change", (e) => {
         e.preventDefault();
-        movieList.updateDisplay(m => m);
+        movieList.updateDisplay(m => true);
     });
 });
 
 document.getElementById("by-title").addEventListener("click", (e) => {
+    e.preventDefault();
     const searchTitle = searchBox.value;
 
-    movieList.updateDisplay(movie => movie.title.contains(searchTitle));
+    movieList.updateDisplay(movie => movie.title.includes(searchTitle));
 });
 
 document.getElementById("by-id").addEventListener("click", (e) => {
+    e.preventDefault();
     let target = searchBox.value;
 
     if (movieList.searchById(target)) {
@@ -203,7 +195,10 @@ document.getElementById("by-id").addEventListener("click", (e) => {
     }
 });
 
-document.getElementById("update-display").addEventListener("click", (e) => movieList.updateDisplay(m => m));
+document.getElementById("update-display").addEventListener("click", (e) =>  {
+    e.preventDefault();
+    movieList.updateDisplay(m => true);
+});
 
 //comment from brnach b
 //comment from branch c
